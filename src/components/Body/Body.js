@@ -97,7 +97,8 @@ function Body() {
           content={() => resumeRef.current}
         />
       </div>
-      <div className={isMobileDevice ? styles.mainM : styles.mainD}>
+      {/* <div className={isMobileDevice ? styles.mainM : styles.mainD}> */}
+      <div className={styles.mainD}>
         <Editor
           sections={sections}
           information={resumeInformation}
