@@ -71,10 +71,10 @@ function Body() {
     },
   });
   return (
-    <div ref={resumeRef} className={styles.container}>
+    <div  className={styles.container}>
       <p className={styles.heading}>Resume Builder</p>
       <div className={styles.toolbar}>
-        <div className={styles.colors}>
+        <div ref={resumeRef} className={styles.colors}>
           {colors.map((item) => (
             <span
               key={item}
@@ -97,8 +97,7 @@ function Body() {
           content={() => resumeRef.current}
         />
       </div>
-      {/* <div className={isMobileDevice ? styles.mainM : styles.mainD}> */}
-      <div className={styles.mainD}>
+      <div className={isMobileDevice ? styles.mainM : styles.mainD}>
         <Editor
           sections={sections}
           information={resumeInformation}
