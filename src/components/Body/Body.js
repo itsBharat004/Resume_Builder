@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { ArrowDown } from "react-feather";
 
