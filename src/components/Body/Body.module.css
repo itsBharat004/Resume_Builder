@@ -80,3 +80,20 @@
   gap: 30px;
   width: 100%;
 }
+.navButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnOuter{
+  margin-right: 14px;
+}
+.btnOuter button{
+  background-color: #B73E3E;
+  transform: scale(1);
+}
+.navButtons button:hover{
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}

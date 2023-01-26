@@ -4,7 +4,6 @@ import { ArrowDown } from "react-feather";
 
 import Editor from "../Editor/Editor";
 import Resume from "../Resume/Resume";
-
 import styles from "./Body.module.css";
 import { useMediaQuery } from 'react-responsive';
 
@@ -13,7 +12,7 @@ function Body() {
   const isMobileDevice = useMediaQuery({
     query: "(min-device-width: 480px)",
   });
- 
+  const [showClearBtn,setClearBtn] = useState(false);
   const sections = {
     basicInfo: "Basic Info",
     workExp: "Work Experience",
@@ -33,7 +32,8 @@ function Body() {
     container.style.setProperty("--color", activeColor);
   }, [activeColor]);
 
-  const [resumeInformation, setResumeInformation] = useState({
+  
+  const initialState = {
     [sections.basicInfo]: {
       id: sections.basicInfo,
       sectionTitle: sections.basicInfo,
@@ -69,7 +69,24 @@ function Body() {
       sectionTitle: sections.other,
       detail: "",
     },
-  });
+  };
+  const [resumeInformation, setResumeInformation] = useState(initialState);
+  useEffect(() => {
+    let item = JSON.parse(localStorage.getItem('information'));
+    if(item && localStorage.getItem('information') !== JSON.stringify(resumeInformation)) {
+      setClearBtn(true);
+      setResumeInformation(item);
+    }
+  },[])
+
+  useEffect(() => {
+    localStorage.setItem('information',JSON.stringify(resumeInformation));
+  },[resumeInformation]);
+
+  function clearResume(){
+    setResumeInformation(initialState);
+    setClearBtn(false);
+  }
   return (
     <div  className={styles.container}>
       <p className={styles.heading}>Resume Builder</p>
@@ -86,6 +103,10 @@ function Body() {
             />
           ))}
         </div>
+        <div className={styles.navButtons}> 
+        <p className={styles.btnOuter}>
+          {showClearBtn ? <button onClick={clearResume}>Clear</button> : null}
+        </p>
         <ReactToPrint
           trigger={() => {
             return (
@@ -96,6 +117,8 @@ function Body() {
           }}
           content={() => resumeRef.current}
         />
+        </div>
+        
       </div>
       <div className={isMobileDevice ? styles.mainM : styles.mainD}>
         <Editor
