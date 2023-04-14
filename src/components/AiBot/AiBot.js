@@ -3,7 +3,7 @@ import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { MainContainer,ChatContainer,MessageList,Message,MessageInput,TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import './AiBot.css'
 
-const API_KEY = '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';
+const API_KEY = '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';
 const AiBot = (props) => {
     const [typing,setTyping] = useState(false);
     const [messages,setMessages] = useState([
@@ -70,11 +70,14 @@ const AiBot = (props) => {
           sender : "ChatGPT",
         }])
         setTyping(false);
+      }).catch((err) => {
+        console.log(err);
+        setTyping(false);
       })
     }
   return (
     <div id="chatBox" className='chatBox'>
-    <div className='cross-btn' onClick={props.chatBoxHandler} ><i class="fa-solid fa-xmark"></i></div>
+    <div className='cross-btn' onClick={props.chatBoxHandler} ><i className="fa-solid fa-xmark"></i></div>
     <div className='chatbox-inner' style={{ position: "relative",width:"350px", height: "400px" }}>
     <MainContainer>
       <ChatContainer>
