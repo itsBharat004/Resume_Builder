@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       {showChatBot ? <AiBot chatBoxHandler={chatBoxHandler}  /> : 
-        <div className='bot-icon' onClick={chatBoxHandler}><i className="fa-sharp fa-regular fa-comment"></i></div>
+        <div  className='bot-icon' onClick={chatBoxHandler}><i className="fa-sharp fa-regular fa-comment"></i></div>
       }
       <Body />
     </div>
