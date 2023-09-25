@@ -91,9 +91,9 @@ function Body() {
     <div  className={styles.container}>
       <p className={styles.heading}>Resume Builder</p>
       <div className={[styles.toolbar, isMobileDevice ? styles.Desk : styles.Mob].join(' ')}>
-        <div ref={resumeRef} className={styles.colors}>
+        <div id="colorPallet" ref={resumeRef} className={styles.colors}>
           {colors.map((item) => (
-            <span
+            <span 
               key={item}
               style={{ backgroundColor: item }}
               className={`${styles.color} ${
